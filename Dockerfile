@@ -42,4 +42,11 @@ ENV SERVICE_HOST="0.0.0.0"
 ENV SERVICE_PORT=8000
 
 # Run service
-CMD python manage.py migrate && gunicorn --workers=1 --bind $SERVICE_HOST:$SERVICE_PORT devops_demo.wsgi
+#CMD python manage.py migrate && gunicorn --workers=1 --bind $SERVICE_HOST:$SERVICE_PORT devops_demo.wsgi
+
+CMD sleep 10 && python manage.py migrate && \
+    echo "from django.contrib.auth.models import User; User.objects.create_superuser('user', 'user@user.com', 'user')" | python manage.py shell && \
+    python manage.py runserver $SERVICE_HOST:$SERVICE_PORT
+
+#CMD python manage.py migrate && python manage.py runserver $SERVICE_HOST:$SERVICE_PORT
+
