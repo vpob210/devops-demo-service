@@ -11,6 +11,7 @@ password: user
 
 
 Не смог победить ошибку "gunicorn not found", изменил CMD в Dokerfile.
+Ну и в идеале бы еще Volume прокинуть для Postgresql
 
 
 P.S. Цитата из сообщения задания на hh:
